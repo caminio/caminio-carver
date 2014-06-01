@@ -75,7 +75,7 @@ module.exports = function( caminio, mongoose ){
 
     schema.virtual('url')
       .get( function(){
-        return join( (this.filenamePrefix || ''), this.filename );
+        return join( (this.filenamePrefix || ''), ( this.filename || '' ) );
       });
 
   }

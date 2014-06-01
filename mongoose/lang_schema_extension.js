@@ -2,7 +2,9 @@ module.exports = function( caminio, mongoose ){
 
   'use strict';
 
-  var join        = require('path').join;
+  var join              = require('path').join;
+  var _                 = require('lodash');
+  var normalizeFilename = require('../lib/util').normalizeFilename;
 
   /**
    * @class CaminioCarverPlugin
@@ -12,17 +14,15 @@ module.exports = function( caminio, mongoose ){
    * @param {Object} options (see the mongoose plugin documentation for details)
    *
    */
-  function CarverPlugin( schema ){
+  function CarverPlugin( schema, options ){
 
-    var _                 = require('lodash');
-    var normalizeFilename = require('../lib/util').normalizeFilename;
+    options = _.merge({ fileSupport: true }, options );
+
     var TranslationSchema = require('./translation_schema')( caminio, mongoose );
 
     schema.add({
 
       translations: { type: [ TranslationSchema ], public: true },
-
-      filename: { type: String, public: true },
 
       status: { type: String, public: true, default: 'draft' }
 
@@ -54,7 +54,16 @@ module.exports = function( caminio, mongoose ){
       this._curLang = lang;
     });
 
+    if( !options.fileSupport )
+      return;
+
+    schema.add({
+      filename: { type: String, public: true }
+    });
+
     schema.pre('save', function(next){
+      if(!this.translations[0].title )
+        return next();
       if(this.filename)
         this.filename = normalizeFilename( this.filename );
       if( !this.isNew )

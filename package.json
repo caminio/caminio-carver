@@ -1,0 +1,28 @@
+{
+  "name": "caminio-carver",
+  "version": "0.0.1",
+  "description": "caminio plugin and schemas extending carver",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:caminio/caminio-carver.git"
+  },
+  "keywords": [
+    "carver",
+    "caminio"
+  ],
+  "author": "thorsten zerha <quaqua@tastenwerk.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/caminio/caminio-carver/issues"
+  },
+  "homepage": "https://github.com/caminio/caminio-carver",
+  "dependencies": {
+    "carver": "~0.0.4",
+    "lodash": "~2.4.1",
+    "mongoose": "~3.8.12"
+  }
+}

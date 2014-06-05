@@ -28,6 +28,11 @@ module.exports = function( caminio, mongoose ){
 
     });
 
+    schema.virtual('isPublished')
+      .get(function(){
+        return this.status === 'published';
+      });
+
     schema.virtual('filenamePrefix')
       .get(function(){
         return this._filenamePrefix;

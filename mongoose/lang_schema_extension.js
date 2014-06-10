@@ -57,6 +57,9 @@ module.exports = function( caminio, mongoose ){
     schema.virtual('curLang')
     .set(function(lang){
       this._curLang = lang;
+    })
+    .get(function(){
+      return this._curLang;
     });
 
     if( !options.fileSupport )

@@ -7,7 +7,8 @@ module.exports = function( caminio, mongoose, namespace ){
   return {
     langSchemaExtension: require('./mongoose/lang_schema_extension')( caminio, mongoose ),
     after: require('./lib/middleware')( caminio, namespace ).after,
-    setupLocals: require('./lib/setup_locals')( caminio, namespace )
+    setupLocals: require('./lib/setup_locals')( caminio, namespace ),
+    docDependencies: require('./lib/doc_dependencies')
   };
 
 };

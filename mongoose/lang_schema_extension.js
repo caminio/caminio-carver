@@ -83,8 +83,11 @@ module.exports = function( caminio, mongoose ){
 
     schema.virtual('url')
       .get( function(){
-        return join( (this.filenamePrefix || ''), ( this.filename || '' ) );
+        return join( (this._path || ''), ( this.filename || '' ) );
       });
+
+    schema.publicAttributes = schema.publicAttributes || [];
+    schema.publicAttributes.push( 'url' );
 
   }
 

@@ -70,7 +70,7 @@ module.exports = function( caminio, mongoose ){
     });
 
     schema.pre('save', function(next){
-      if(!this.translations[0].title )
+      if( !this.translations[0] || !this.translations[0].title )
         return next();
       if(this.filename)
         this.filename = normalizeFilename( this.filename );

@@ -34,6 +34,17 @@ module.exports = function TranslationSchema( caminio, mongoose ){
     aside: { type: String, public: true },
 
     /**
+     * @property aside2
+     */
+    aside2: { type: String, public: true },
+
+    /**
+     * @property aside3
+     */
+    aside3: { type: String, public: true },
+
+
+    /**
      * @property content
      * @type String
      */  
